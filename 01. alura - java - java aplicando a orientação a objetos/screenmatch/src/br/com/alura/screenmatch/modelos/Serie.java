@@ -1,17 +1,17 @@
 package br.com.alura.screenmatch.modelos;
 
 public class Serie extends Titulo {
-    private int temporada;
+    private int temporadas;
     private boolean ativa;
     private int episodiosPorTemporada;
     private int minutosPorEpisodio;
 
     public int getTemporada() {
-        return temporada;
+        return temporadas;
     }
 
     public void setTemporada(int temporada) {
-        this.temporada = temporada;
+        this.temporadas = temporada;
     }
 
     public boolean isAtiva() {
@@ -36,5 +36,15 @@ public class Serie extends Titulo {
 
     public void setMinutosPorEpisodio(int minutosPorEpisodio) {
         this.minutosPorEpisodio = minutosPorEpisodio;
+    }
+
+    @Override
+    public int getDuracaoEmMinutos() {
+        return temporadas * getEpisodiosPorTemporada() * minutosPorEpisodio;
+    }
+
+    @Override
+    public void exibeFichaTecnica() {
+        System.out.println("Duraçào para maratonar Lost: " + this.getDuracaoEmMinutos());
     }
 }
